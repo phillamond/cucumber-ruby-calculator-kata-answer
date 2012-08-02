@@ -1,23 +1,32 @@
 Given /^the input "(.*?)"$/ do |input|
   @input = input
+  @calc = Calculator.new
 end
 
 When /^the calculator runs the addition$/ do
-  @output = Calculator.add(@input)
+  @output = @calc.runwith(@input)
 end
 
 When /^the calculator runs the subtraction$/ do
-  @output = Calculator.subtract(@input)
+  @output = @calc.runwith(@input)
 end
 
 When /^the calculator runs the division$/ do
-  @output = Calculator.divide(@input)
+  @output = @calc.runwith(@input)
 end
 
 When /^the calculator runs the multiplication$/ do
-  @output = Calculator.multiply(@input)
+  @output = @calc.runwith(@input)
+end
+
+When /^the calculator runs with the input$/ do
+  @output = @calc.runwith(@input)
 end
 
 Then /^the output should be "(.*?)"$/ do |expected|
-  @output.to_s.should == expected
+  @output.should == expected
+end
+
+Then /^the display should be (\d+) characters long$/ do |display_length|
+  @output.length.should == display_length.to_i
 end
