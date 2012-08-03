@@ -28,5 +28,5 @@ Then /^the output should be "(.*?)"$/ do |expected|
 end
 
 Then /^the display should be (\d+) characters long$/ do |display_length|
-  @output.length.should == display_length.to_i
+  @output.length.should be display_length.to_i
 end
